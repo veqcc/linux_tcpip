@@ -1,0 +1,4 @@
+*.o
+.vagrant/
+
+test/raw_soc_test
