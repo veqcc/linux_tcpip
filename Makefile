@@ -1,10 +1,18 @@
-TEST = test/raw_soc_test
-OBJS = raw/soc.o
+TEST = test/raw_soc_test \
+	   test/raw_test
 
-CFLAGS := -W -Wall
+OBJS = raw/soc.o \
+	   raw.o \
+	   util.o
 
-test/raw_soc_test: test/raw_soc_test.c $(OBJS)
-	$(CC) $(CFLAGS) -o $@ $(OBJS) test/raw_soc_test.c
+CFLAGS := -g -W -Wall -Wno-unused-parameter -I .
+
+.PHONY: all clean
+
+all: $(TEST)
+
+$(TEST): % : %.o $(OBJS)
+	$(CC) $(CFLAGS) -o $@ $^
 
 .c.o:
 	$(CC) $(CFLAGS) -c $< -o $@

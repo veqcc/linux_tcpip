@@ -2,3 +2,4 @@
 .vagrant/
 
 test/raw_soc_test
+test/raw_test
