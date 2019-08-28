@@ -1,11 +1,14 @@
 TEST = test/raw_soc_test \
-	   test/raw_test
+	   test/raw_test \
+	   test/ethernet_test
 
 OBJS = raw/soc.o \
 	   raw.o \
-	   util.o
+	   util.o \
+	   ethernet.o \
+	   net.o
 
-CFLAGS := -g -W -Wall -Wno-unused-parameter -I .
+CFLAGS := -g -W -Wall -Wno-unused-parameter -I . -pthread -DHAVE_PF_PACKET
 
 .PHONY: all clean
 
